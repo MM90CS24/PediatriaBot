@@ -45,7 +45,7 @@ async def download(client: Client, message: Message):
     
         finalize = size / 1000000
 
-        await msg.edit("Descargado ```{filename}```\nTamaño: ```{finalsize} MB```")
+        await msg.edit("Descargado ```{filename}```\nTamaño: ```{finalize} MB```")
         
         try:
             if size > ZIPS * 1024 * 1024:
