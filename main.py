@@ -73,6 +73,7 @@ async def download(client: Client, message: Message):
 
             else:
                 file_link = Free_API.upload_file(filename)
+                await message.reply(str(filename))
                 await message.reply(file_link)
 
 
