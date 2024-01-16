@@ -3,3 +3,4 @@ pyrogram
 aiohttp
 yarl
 bs4
+requests_toolbelt
