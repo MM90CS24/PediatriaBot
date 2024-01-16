@@ -61,7 +61,7 @@ async def download(client: Client, message: Message):
                     link = Free_API.upload_file(files)
 
                     with open(filename+".txt", "a") as txt:
-                        txt.write(link+"\n")
+                        txt.write({name:files,url:'link'}+"\n")
                     os.remove(files)
 
                 await message.reply_document(filename+".txt", caption="Archivo de [{}](https://t.me/{})".format(message.from_user.first_name, message.from_user.username))
