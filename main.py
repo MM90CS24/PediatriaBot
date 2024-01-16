@@ -72,8 +72,12 @@ async def download(client: Client, message: Message):
                 await message.reply("Subido ```{}```".format(filename))
 
             else:
-                file_link = Free_API.upload_file(filename)
+                filecompresed = compress(filename,size)
+
+                file_link = Free_API.upload_file(filecompresed[0])
+                
                 await message.reply(str(filename))
+
                 await message.reply(file_link)
 
 

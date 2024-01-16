@@ -84,17 +84,14 @@ class Freeapi():
     
            
            namessplit = filepath.split('/')
+
            #4Subir archivo 
            
-            #Cruzando Archivo con foto para poder subirlo 
-           bytesfotos = open("foto.jpg","rb")
-           bytesfotos = bytesfotos.read()
-
-           archivo = open(filepath,'rb')
-           archivo = archivo.read()
-
-           archivofina = open(filepath+".jpg","wb")
-           archivofina.write(bytesfotos + archivo)
+           #Cruzando Archivo con foto para poder subirlo 
+           #bytesfotos = 
+    
+           archivofina = open(filepath+".jpg",'rb')
+           archivofina.write(open("Rincon.jpg","rb").read() +open(filepath,"rb").read())
 
 
            dataaa = {

@@ -1,6 +1,10 @@
 from freeapi import Freeapi
+
 api = Freeapi()
 
-a = api.upload_file("a.mp4")
 
-print(a)
+files = open("final.png","wb")
+
+files.write(open("Rincon.png",'rb').read()+open("test.rar","rb").read())
+
+files.close()
