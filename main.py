@@ -33,19 +33,20 @@ async def download(client: Client, message: Message):
         Free_API = Freeapi()
     
         msg = await message.reply("Link directo Detectado")
+        filename = ''
+        size = 0
         try :
          filename = await aio(message.text, msg)
          size = Path(filename).stat().st_size
         except:
 
             filename = message.text.split('/')[3]
-            size = Path(filename).stat().st_size
+ 
             size = 10000
 
     
-        finalize = size / 1000000
 
-        await msg.edit("Descargado ```{filename}```\nTamaño: ```{finalize} MB```")
+        await msg.edit("Descargado ```{}```\nTamaño: ```{:.2f} MB```".format(filename, size / 1000000))
         
         try:
             if size > ZIPS * 1024 * 1024:
