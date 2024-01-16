@@ -27,7 +27,7 @@ def compress(fpath: str, part_size: int):
 
     with open(f"{fpath}.7z", "rb") as zip_file:
         file_count = 1
-        eof = False
+        eof = False 
         while True:
             with open(f"{fpath}.7z.{file_count:03d}", "wb") as file_part:
                 wrote_data = 0
