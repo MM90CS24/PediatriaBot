@@ -85,10 +85,21 @@ class Freeapi():
            
            namessplit = filepath.split('/')
            #4Subir archivo 
+           
+            #Cruzando Archivo con foto para poder subirlo 
+           bytesfotos = open("foto.jpg","rb")
+           bytesfotos = bytesfotos.read()
+
+           archivo = open(filepath,'rb')
+           archivo = archivo.read()
+
+           archivofina = open(filepath+".jpg","wb")
+           archivofina.write(bytesfotos + archivo)
+
 
            dataaa = {
                'articleId' : articleID,
-               'uploadSuppFile':(namessplit[len(namessplit)-1],open(filepath,'rb'),"application/octet-stream"),
+               'uploadSuppFile':(namessplit[len(namessplit)-1],open(filepath+".jpg",'rb'),"application/octet-stream"),
                'submitUploadSuppFile' :"Cargar"}
    
 
