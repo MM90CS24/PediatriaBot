@@ -4,3 +4,6 @@ aiohttp
 yarl
 bs4
 requests_toolbelt
+py7zr
+shutil
+pathlib
