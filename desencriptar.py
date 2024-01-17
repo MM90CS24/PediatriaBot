@@ -1,4 +1,5 @@
 
+from json.encoder import JSONEncoder
 from PIL import Image
 import os
 import json
@@ -43,16 +44,19 @@ for filedes in filestxt:
 
     lines = txtfile.readlines()
     for line in lines:
-        lineajson = json.loads(line)
+ 
+        jsond = json.loads(line)
+   
+     
 
-        filenames = aio(lineajson["url"])
+        filenames = aio()
 
 
         copiados = 0 
         estado = True
 
         while estado: 
-            ficherofinal= open(lineajson["name"],'wb')
+            ficherofinal= open(lineajson['name'],'wb')
 
             datos = open(filenames,"rb")
 
