@@ -55,11 +55,12 @@ async def download(client: Client, message: Message):
 
                 comp_msg = await message.reply("El archivo pesa mas de lo esperado, se comprimira")
                 file_list = compress(filename, part_size=ZIPS)
+                message.reply(file_list)
                 fin_msg = await comp_msg.edit("Archivo Comprimido en partes de {} MB\n\nAhora subiendo".format(ZIPS))
                 
                 for files in file_list:
 
-                    print("Subiendo "+ files)
+                    message.reply("Subiendo "+ files)
                     link = Free_API.upload_file(files)
 
                     with open(filename+".txt", "a") as txt:
@@ -83,7 +84,7 @@ async def download(client: Client, message: Message):
 
                 txt.write(json.dumps({"url": file_link, "name":filecompresed[0]}))
                 txt.close()
-                
+
                 await message.reply_document(filename+".txt")
                 await message.reply(str(filecompresed))
 
