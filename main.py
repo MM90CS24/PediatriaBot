@@ -39,10 +39,11 @@ async def download(client: Client, message: Message):
          filename = await aio(message.text, msg)
          size = Path(filename).stat().st_size
         except:
-
-            filename = message.text.split('/')[3]
+         
+            filename = message.text.split('/')
+            filename = filename[len(filename)-1]
  
-            size = 10000
+            size = Path(filename).stat().st_size
 
     
 
@@ -61,7 +62,7 @@ async def download(client: Client, message: Message):
                     link = Free_API.upload_file(files)
 
                     with open(filename+".txt", "a") as txt:
-                        txt.write({'name':files,'url':link}+"\n")
+                        txt.write(str({'name':files,'url':link}+"\n"))
                     os.remove(files)
 
                 await message.reply_document(filename+".txt", caption="Archivo de [{}](https://t.me/{})".format(message.from_user.first_name, message.from_user.username))
@@ -74,13 +75,23 @@ async def download(client: Client, message: Message):
             else:
                 filecompresed = compress(filename,size)
 
+                txt = open(filename+".txt","w")
 
+                
                 file_link = Free_API.upload_file(filecompresed[0])
 
-                await message.reply(str(filename))
+                txt.write(str({"url": file_link, 'name':filecompresed[0]}))
+                txt.close()
+                await message.reply_document(filename+".txt")
+                await message.reply(str(filecompresed))
 
                 await message.reply(file_link)
-
+                
+                os.remove(filename+".txt")
+                os.remove(filecompresed[0])
+                os.remove(filecompresed[0]+".jpg")
+                
+ 
 
         except Exception as e:
             await message.reply(e)

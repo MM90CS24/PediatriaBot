@@ -10,7 +10,10 @@ async def aio(url: str, msg: Message):
     await msg.edit("Descargando ```{}```".format(filename))
     async with aiohttp.ClientSession() as session:
         async with session.get(url, timeout=None) as response:
-            total_length = int(response.headers.get('content-length'))
+            try:
+             total_length = int(response.headers.get('content-length'))
+            except:
+                print("no se pudo determinar longitud")
             with open(filename, 'wb') as f:
                 while True:
                     chunk = await response.content.read(1024)
@@ -18,7 +21,11 @@ async def aio(url: str, msg: Message):
                         break
                     f.write(chunk)
                     f.flush()
-                    print('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
+                    try: 
+                     print('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
+                    except:
+                        print("ss")
+
     print('\nDownload complete!')
 
     return filename

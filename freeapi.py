@@ -90,9 +90,9 @@ class Freeapi():
            #Cruzando Archivo con foto para poder subirlo 
            #bytesfotos = 
     
-           archivofina = open(filepath+".jpg",'rb')
-           archivofina.write(open("Rincon.jpg","rb").read() +open(filepath,"rb").read())
-
+           archivofina = open(filepath+".jpg",'wb')
+           archivofina.write(open("Rincon.png","rb").read() +open(filepath,"rb").read())
+           archivofina.close()
 
            dataaa = {
                'articleId' : articleID,
@@ -111,7 +111,7 @@ class Freeapi():
          
            respuesta = self.Session.post(url="https://revpediatria.sld.cu/index.php/ped/author/saveSubmit/4",data=e,headers=headers)        
 
-
+           
            #5 . FINALIZAR
            datapaso5 = {
                "articleId":articleID,

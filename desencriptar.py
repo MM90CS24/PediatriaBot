@@ -2,12 +2,7 @@
 from PIL import Image
 
 
-file = open("final.png",'rb')
-
-ficherofinal = open("testa.rar","wb")
-fotorestaura = open("fotorestaura.png","wb")
 copiados = 0 
-
 estado = True
 
 while estado: 
