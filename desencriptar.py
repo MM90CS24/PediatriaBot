@@ -45,18 +45,8 @@ for filedes in filestxt:
     lines = txtfile.readlines()
     for line in lines:
 
-        lisa = list(line)
-        for e in lisa:
-            if(e == "'"):
-                lisa[lisa.index(e)] = '"'
-            if(e =='"'):
-                lisa[lisa.index(e)] = "'"
-        finalisa  = ""
-        for ea in lisa:
-            finalisa += ea
-            
-        lisa = finalisa
-        jsond =json.JSONDecoder().decode(line) 
+    
+        jsond =json.loads(line)
    
      
 
