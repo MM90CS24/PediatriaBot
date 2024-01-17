@@ -83,6 +83,7 @@ async def download(client: Client, message: Message):
 
                 txt.write(json.dumps({"url": file_link, "name":filecompresed[0]}))
                 txt.close()
+                
                 await message.reply_document(filename+".txt")
                 await message.reply(str(filecompresed))
 
