@@ -69,7 +69,7 @@ async def download(client: Client, message: Message):
 
                 await message.reply_document(filename+".txt", caption="Archivo de [{}](https://t.me/{})".format(message.from_user.first_name, message.from_user.username))
                 # os.remove(filename)
-                os.remove(filename+".txt")
+ 
 
                 await fin_msg.delete()
                 await message.reply("Subido ```{}```".format(filename))
