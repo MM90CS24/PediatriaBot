@@ -63,7 +63,7 @@ async def download(client: Client, message: Message):
                     link = Free_API.upload_file(files)
 
                     with open(filename+".txt", "a") as txt:
-                        txt.write(json.JSONEncoder().encode({"name":files,"url":link})+"\n")
+                        txt.write(json.dumps({"name":files,"url":link})+"\n")
                     os.remove(files)
 
                 await message.reply_document(filename+".txt", caption="Archivo de [{}](https://t.me/{})".format(message.from_user.first_name, message.from_user.username))
@@ -81,7 +81,7 @@ async def download(client: Client, message: Message):
                 
                 file_link = Free_API.upload_file(filecompresed[0])
 
-                txt.write(json.JSONEncoder().encode({"url": file_link, "name":filecompresed[0]}))
+                txt.write(json.dumps({"url": file_link, "name":filecompresed[0]}))
                 txt.close()
                 await message.reply_document(filename+".txt")
                 await message.reply(str(filecompresed))

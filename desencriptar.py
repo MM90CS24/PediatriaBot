@@ -44,19 +44,30 @@ for filedes in filestxt:
 
     lines = txtfile.readlines()
     for line in lines:
- 
-        jsond = json.loads(line)
+
+        lisa = list(line)
+        for e in lisa:
+            if(e == "'"):
+                lisa[lisa.index(e)] = '"'
+            if(e =='"'):
+                lisa[lisa.index(e)] = "'"
+        finalisa  = ""
+        for ea in lisa:
+            finalisa += ea
+            
+        lisa = finalisa
+        jsond =json.JSONDecoder().decode(line) 
    
      
 
-        filenames = aio()
+        filenames = aio(jsond['url'])
 
 
         copiados = 0 
         estado = True
 
         while estado: 
-            ficherofinal= open(lineajson['name'],'wb')
+            ficherofinal= open(jsond['name'],'wb')
 
             datos = open(filenames,"rb")
 
