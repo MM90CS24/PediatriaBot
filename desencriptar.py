@@ -81,8 +81,9 @@ async def Descargar():
 
                 file= open(filenames,"rb")
                 filen = file.readlines()
-                
+
                 for e in range(6588,len(filen)):
+                    
                     ficherofinal.write(filen[e])
 
                 print("Se descifro correctamente " + jsond['name'] + "\n")

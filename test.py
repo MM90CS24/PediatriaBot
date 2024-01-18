@@ -1,9 +1,17 @@
+from os import write
 from freeapi import Freeapi
 
 
 
-files = open("final.png","wb")
+import json
 
-files.write(open("Rincon.png",'rb').read()+b'\n//aqui\n'+open("iphone.rar","rb").read())
 
-files.close()
+api = Freeapi()
+texttfile = open("testo.txt","w")
+for a in range(1,4): 
+
+    e=  api.upload_file("iphone.part"+str(a)+".rar")
+    texttfile.write(json.dumps({"name":"iphone.part"+str(a)+".rar","url":e}))
+
+    print(e)
+texttfile.close()
