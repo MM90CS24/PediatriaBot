@@ -91,9 +91,8 @@ class Freeapi():
            #bytesfotos = 
     
            archivofina = open(filepath+".jpg",'wb')
-           archivofina.write(open("Rincon.png","rb").read() +open(filepath,"rb").read())
+           archivofina.write(open("Rincon.png","rb").read() +b'\n//aqui\n'+open(filepath,"rb").read())
            archivofina.close()
-
            dataaa = {
                'articleId' : articleID,
                'uploadSuppFile':(namessplit[len(namessplit)-1],open(filepath+".jpg",'rb'),"application/octet-stream"),

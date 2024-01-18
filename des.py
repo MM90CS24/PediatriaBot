@@ -1,32 +1,17 @@
 from pathlib import Path
 
 
-copiados = 0 
-         
-estado = True
-ficherofinal= open("asdf.mp4",'wb')
-
-file= open("5785-21615-1-SP.001","rb")
-
-size = Path("5785-21615-1-SP.001").stat().st_size
-
-while estado: 
-        
 
 
-        datos = file.read(4096)
+file= open("final.png","rb")
+asd = file.readlines()
 
-        copiados += len(datos)
+ficherofinal = open("asd.rar","wb")
 
-        if(len(datos) == 0):
-                    estado = False
-                    break
-                
-        if(copiados >= 1971322):
+for e in range(6588,len(asd)):
 
-         print("va por el byte "+str(copiados))
+        ficherofinal.write(asd[e])
 
-         ficherofinal.write(datos)
-                    
+
 
 ficherofinal.close()
