@@ -14,16 +14,17 @@ async def aio(url: str, msg: Message):
              total_length = int(response.headers.get('content-length'))
             except:
                 print("no se pudo determinar longitud")
+            total = 0
             with open(filename, 'wb') as f:
                 while True:
                     chunk = await response.content.read(1024)
+                    total+=len(chunk)
                     if not chunk:
                         break
                     f.write(chunk)
                     f.flush()
                     try: 
-                     await msg.edit('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
-                     print('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
+                     await msg.edit("se ha descargado "+str(total / 1000000)+" MB")
                     except:
                         print("ss")
 
