@@ -7,6 +7,7 @@ async def aio(url: str, msg: Message):
     # filename = url.split('/')[-1]
     # o este:
     filename = URL(url).name # Recomendado
+    lastsize = ""
     await msg.edit("Descargando "+str(filename))
     async with aiohttp.ClientSession() as session:
         async with session.get(url, timeout=None) as response:
@@ -25,7 +26,9 @@ async def aio(url: str, msg: Message):
                     f.flush()
                     try: 
                      sizestring = str(total / 1000000)
-                     await msg.edit("se ha descargado "+sizestring[0]+"."+sizestring[1]+" MB")
+                     if(str(sizestring[0]+"."+sizestring[1]) != lastsize):
+                         lastsize = sizestring[0]+"."+sizestring[1]
+                         await msg.edit("se ha descargado "+sizestring[0]+"."+sizestring[1]+" MB")
                     except:
                         print("ss")
 
