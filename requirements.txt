@@ -7,3 +7,4 @@ requests_toolbelt
 py7zr
 pathlib
 flask
+tgcrypto

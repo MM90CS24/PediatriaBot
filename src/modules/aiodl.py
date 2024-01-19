@@ -7,7 +7,7 @@ async def aio(url: str, msg: Message):
     # filename = url.split('/')[-1]
     # o este:
     filename = URL(url).name # Recomendado
-    await msg.edit("Descargando ```{}```".format(filename))
+    await msg.edit("Descargando "+str(filename))
     async with aiohttp.ClientSession() as session:
         async with session.get(url, timeout=None) as response:
             try:
@@ -22,6 +22,7 @@ async def aio(url: str, msg: Message):
                     f.write(chunk)
                     f.flush()
                     try: 
+                     await msg.edit('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
                      print('\r{:.2f}%'.format(f.tell() * 100 / total_length), end='')
                     except:
                         print("ss")
