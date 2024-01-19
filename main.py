@@ -141,7 +141,8 @@ if __name__ == "__main__":
     def keep_alive():
      t = Thread(target=run)
      t.start()
-    
+     
+    keep_alive()
     print("Bot iniciado")
     bot.run()
-    keep_alive()
+    
