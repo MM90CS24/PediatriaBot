@@ -8,6 +8,7 @@ import time
 import aiohttp
 import requests
 from yarl import URL
+
 async def aio(url: str):
     # Se puede usar este:
     # filename = url.split('/')[-1]
@@ -15,13 +16,13 @@ async def aio(url: str):
     try:
         filename = ""
         with requests.Session() as session:
-            data = {"source":"","username": "ernestico1575" ,"password": "12345678"}
+            data = {"source":"","username": "ernestico1575" ,"password": "291203Er*"}
 
             session.headers.update({"Content-Type":"application/x-www-form-urlencoded"})
         
-            with session.post(url="https://revpediatria.sld.cu/index.php/ped/login/signIn",data=data)as login:
+            with session.post(url="https://revsaludpublica.sld.cu/index.php/spu/login/signIn",data=data)as login:
                 print(login.url)
-                with session.get(url, timeout=0.5,stream =True) as response:
+                with session.get(url, timeout=10,stream =True) as response:
                 
                     total_length = int(response.headers.get('content-length'))
                     namesplit = response.headers.get('Content-Disposition').split(';')
@@ -44,8 +45,11 @@ async def aio(url: str):
     except:
         
         print("Time out it try again \n")
+
         time.sleep(10)
+
         await aio(url)
+        
                         
 
     print('\nDownload complete!')
@@ -82,13 +86,16 @@ async def Descargar():
                 file= open(filenames,"rb")
                 filen = file.readlines()
 
-                for e in range(6588,len(filen)):
-                    
+                for e in range(6589,len(filen)):
+
                     ficherofinal.write(filen[e])
 
                 print("Se descifro correctamente " + jsond['name'] + "\n")
-                file.close()            
+
+                file.close()   
+
                 os.remove(filenames)
+                
                 ficherofinal.close()
 
 asyncio.run( Descargar())
