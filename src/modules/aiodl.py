@@ -24,7 +24,8 @@ async def aio(url: str, msg: Message):
                     f.write(chunk)
                     f.flush()
                     try: 
-                     await msg.edit("se ha descargado "+str(total / 1000000)+" MB")
+                     sizestring = str(total / 1000000)
+                     await msg.edit("se ha descargado "+sizestring[0]+"."+sizestring[1]+" MB")
                     except:
                         print("ss")
 
