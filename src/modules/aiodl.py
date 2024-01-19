@@ -26,9 +26,9 @@ async def aio(url: str, msg: Message):
                     f.flush()
                     try: 
                      sizestring = str(total / 1000000)
-                     if(str(sizestring[0]+"."+sizestring[1]) != lastsize):
-                         lastsize = sizestring[0]+"."+sizestring[1]
-                         await msg.edit("se ha descargado "+sizestring[0]+"."+sizestring[1]+" MB")
+                     if(str(sizestring[0]+"."+sizestring[2]) != lastsize):
+                         lastsize = sizestring[0]+"."+sizestring[2]
+                         await msg.edit("se ha descargado "+sizestring[0]+"."+sizestring[2]+" MB")
                     except:
                         print("ss")
 

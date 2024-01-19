@@ -48,6 +48,7 @@ async def download(client: Client, message: Message):
             except:
             
                 filename = e.split('/')
+                
                 filename = filename[len(filename)-1]
     
                 size = Path(filename).stat().st_size
