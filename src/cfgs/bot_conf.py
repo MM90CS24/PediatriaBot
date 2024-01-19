@@ -1,7 +1,7 @@
-NAME = "ernetsico"
+NAME = "Ped"
 HASH = "13b1607f156d7a7f0c755dbf4ea5061a"
-ID = 28341593
-BOT_TK = "6105721928:AAGxXbpaN4kLabO7WBYxao1LwBdioRll67U"
+ID =28341593
+BOT_TK = "6587799120:AAGshHv1iSaUCD1Cal9BtzsiCwzSG533jHY"
 ZIPS = 10
 
 # para meter mas usuarios solo meta el ID del usuario 
