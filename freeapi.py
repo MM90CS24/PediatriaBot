@@ -8,9 +8,9 @@ class Freeapi():
 
         self.URI = "https://revpediatria.sld.cu/"
 
-        self.username = "ernestico1575"
+        self.username = "Yulesky"
 
-        self.password = "291203Er*"
+        self.password = "Krigsmjod04."
 
         self.Session = requests.Session()
 
