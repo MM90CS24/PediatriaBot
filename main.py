@@ -68,7 +68,8 @@ async def download(client: Client, message: Message):
                     
                     for files in file_list:
 
-                        await message.reply("Subiendo "+ files)               
+                        await message.reply("Subiendo "+ files)
+               
                      
                                                
                         link =  Free_API.upload_file(files)
@@ -76,7 +77,7 @@ async def download(client: Client, message: Message):
 
 
                         with open(filename+".txt", "a") as txt:
-                            txt.write(str(json.dumps({"name":files,"url":link})+"\n"))
+                            txt.write(str(json.dumps({"name":files,"url":link,"username":Free_API.usernamem,"pass":Free_API.returnpass})+"\n"))
                         os.remove(files)
                         
                     try:
@@ -98,7 +99,7 @@ async def download(client: Client, message: Message):
                     Free_API = Freeapi()
                     file_link = Free_API.upload_file(filecompresed[0])
 
-                    txt.write(json.dumps({"url": file_link, "name":filecompresed[0]}))
+                    txt.write(json.dumps({"url": file_link, "name":filecompresed[0],"username":Free_API.usernamem,"pass":Free_API.returnpass}))
                     txt.close()
 
                     await message.reply_document(filename+".txt")

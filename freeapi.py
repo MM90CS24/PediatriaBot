@@ -18,6 +18,11 @@ class Freeapi():
 
         pass
 
+    def returnpass(self):
+        return self.password
+    def returnusername(self):
+        return self.username
+
     def login(self):
 
         data = {"source":"","username": self.username ,"password": self.password}
