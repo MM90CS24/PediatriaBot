@@ -26,6 +26,18 @@ async def start(client: Client, message: Message):
     else:
         await message.reply("No tiene autorizacion")
 
+@bot.on_message(filters.command("setnube", prefixes="/"))
+async def start(client: Client, message: Message):
+    print("Uso el bot "+client.name)
+    if message.from_user.id in ALLOWED:
+
+        messagesplite = message.text.split(" ")[-1]
+        file = open("/users/"+str(message.from_user.id)+".json","w")
+        file.write(messagesplite)
+        
+    else:
+        await message.reply("No tiene autorizacion")
+
 
 @bot.on_message(filters.regex(".*https://.*") | filters.regex(".*http://.*"))
 async def download(client: Client, message: Message):
@@ -33,10 +45,21 @@ async def download(client: Client, message: Message):
     if message.from_user.id in ALLOWED:
         print("Uso el bot "+client.name)
         
+       
+        try:
+
+             jsonloads = json.loads(open("/users/"+str(message.from_user.id)+".json","r").read())
+             password = jsonloads["pass"]
+             username = jsonloads["username"]
+             nube = jsonloads["nube"]
+
+        except:
+            await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','password':'contrasena'}")
+
         links = message.text.split("\n")
 
         for e in links:
-            Free_API = Freeapi()
+            Free_API = Freeapi(nube,username,password)
             if(e==None):
                 continue
             msg = await message.reply("Link directo Detectado")
