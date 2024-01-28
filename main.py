@@ -36,7 +36,7 @@ async def start(client: Client, message: Message):
         file.write(messagesplite)
         file.close()
 
-        await message.reply("tu configuracion actual es : " +str(open("/users/"+str(message.from_user.id)+".json","r").os.read()))
+        await message.reply("tu configuracion actual es : " +str(open("/users/"+str(message.from_user.id)+".json","r").read()))
 
     else:
         await message.reply("No tiene autorizacion")
@@ -55,7 +55,7 @@ async def download(client: Client, message: Message):
              nube = jsonloads["nube"]
 
         except:
-            await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','password':'contrasena'}")
+            await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
 
         links = message.text.split("\n")
 
