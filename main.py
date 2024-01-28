@@ -32,7 +32,7 @@ async def start(client: Client, message: Message):
     if message.from_user.id in ALLOWED:
 
         messagesplite = message.text.split(" ")[-1]
-        file = open("/users/"+str(message.from_user.id)+".json","w")
+        file = open(str(message.from_user.id)+".json","w")
         file.write(messagesplite)
         file.close()
 
@@ -49,7 +49,7 @@ async def download(client: Client, message: Message):
         print("Uso el bot "+client.name)
         try:
 
-             jsonloads = json.loads(open("/users/"+str(message.from_user.id)+".json","r").read())
+             jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
              password = jsonloads["pass"]
              username = jsonloads["username"]
              nube = jsonloads["nube"]
