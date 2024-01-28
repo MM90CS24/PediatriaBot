@@ -1,4 +1,4 @@
-from genericpath import exists
+from genericpath import exists, isfile
 import json
 import os
 from pathlib import Path
@@ -54,7 +54,7 @@ async def download(client: Client, message: Message):
         for e in links:
             Free_API=""
 
-            if(Path.is_file(str(message.from_user.id)+".json")):
+            if(isfile(str(message.from_user.id)+".json")):
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
 
