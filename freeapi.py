@@ -21,11 +21,14 @@ class Freeapi():
         pass
     def setpass(self,passd):
         self.password = passd
+        
     def setuser(self,user):
         self.username = user
+
     def setnube(self, nube):
         self.URI = nube
         self.nube = nube
+
     def returnpass(self):
         return self.password
     def returnusername(self):

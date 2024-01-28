@@ -54,7 +54,7 @@ async def download(client: Client, message: Message):
         for e in links:
             Free_API=""
 
-            try:
+            if(Path.is_file(str(message.from_user.id)+".json")):
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
 
@@ -63,16 +63,15 @@ async def download(client: Client, message: Message):
              user= jsonloads["username"]
           
              nube = jsonloads["nube"]
-
+             
              Free_API = Freeapi()
+             
              Free_API.setnube(nube)
              Free_API.setuser(user)
              Free_API.setpass(passw)
-    
-
-            except:
+            else:
                 await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
-            
+          
             if(e==None):
                 continue
             msg = await message.reply("Link directo Detectado")
