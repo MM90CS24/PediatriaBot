@@ -56,10 +56,10 @@ async def download(client: Client, message: Message):
 
             if(exists(str(message.from_user.id)+".json")):
 
-             await message.reply(str(message.from_user.id))
 
              Free_API = Freeapi(id=str(message.from_user.id))
-             await message.reply("ya paso esto")
+
+
             else:
                 await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
           
@@ -122,7 +122,17 @@ async def download(client: Client, message: Message):
                     
                     txt = open(filename+".txt","w")
 
-                    Free_API = Freeapi()
+                    Free_API=""
+
+                    if(exists(str(message.from_user.id)+".json")):
+
+
+                           Free_API = Freeapi(id=str(message.from_user.id))
+
+
+                    else:
+                            await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
+               
                     file_link = Free_API.upload_file(filecompresed[0])
 
                     txt.write(json.dumps({"url": file_link, "name":filecompresed[0],"username":str(Free_API.returnusername()),"pass":str(Free_API.returnpass())}))
