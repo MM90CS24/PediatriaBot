@@ -51,8 +51,11 @@ async def download(client: Client, message: Message):
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
              password = jsonloads["pass"]
+             await message.reply(password)
              username = jsonloads["username"]
+             await message.reply(username)
              nube = jsonloads["nube"]
+             await message.reply(nube)
 
         except:
             await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
