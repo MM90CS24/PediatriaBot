@@ -47,26 +47,29 @@ async def download(client: Client, message: Message):
     
     if message.from_user.id in ALLOWED:
         print("Uso el bot "+client.name)
-        passw=""
-        user=""
-        nube= ""
-        try:
+       
+
+        links = message.text.split("\n")
+
+        for e in links:
+            Free_API=""
+
+            try:
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
+             
              passw = jsonloads["pass"]
       
              user= jsonloads["username"]
           
              nube = jsonloads["nube"]
+
+             Free_API = Freeapi(nube,user,passw)
     
 
-        except:
-            await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
-
-        links = message.text.split("\n")
-
-        for e in links:
-            Free_API = Freeapi(nube,user,passw)
+            except:
+                await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
+            
             if(e==None):
                 continue
             msg = await message.reply("Link directo Detectado")
