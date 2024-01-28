@@ -34,7 +34,10 @@ async def start(client: Client, message: Message):
         messagesplite = message.text.split(" ")[-1]
         file = open("/users/"+str(message.from_user.id)+".json","w")
         file.write(messagesplite)
-        
+        file.close()
+
+        await message.reply("tu configuracion actual es : " +str(open("/users/"+str(message.from_user.id)+".json","r").os.read()))
+
     else:
         await message.reply("No tiene autorizacion")
 
@@ -44,8 +47,6 @@ async def download(client: Client, message: Message):
     
     if message.from_user.id in ALLOWED:
         print("Uso el bot "+client.name)
-        
-       
         try:
 
              jsonloads = json.loads(open("/users/"+str(message.from_user.id)+".json","r").read())
