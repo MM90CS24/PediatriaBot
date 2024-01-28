@@ -22,11 +22,12 @@ class Freeapi():
         pass
     def loadjson(self):
 
-        jsonloads = json.loads(open(str(id)+".json","r").read())
+        jsonloads = json.loads(open(str(self.id)+".json","r").read())
         self.URI = jsonloads["nube"]
         self.nube = jsonloads["nube"]
         self.password = jsonloads["pass"]
         self.username = jsonloads["username"]
+
         pass
     def returnpass(self):
         return self.password
