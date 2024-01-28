@@ -36,7 +36,7 @@ async def start(client: Client, message: Message):
         file.write(messagesplite)
         file.close()
 
-        await message.reply("tu configuracion actual es : " +str(open("/users/"+str(message.from_user.id)+".json","r").read()))
+        await message.reply("tu configuracion actual es : " +str(open(str(message.from_user.id)+".json","r").read()))
 
     else:
         await message.reply("No tiene autorizacion")
@@ -60,7 +60,7 @@ async def download(client: Client, message: Message):
         links = message.text.split("\n")
 
         for e in links:
-            Free_API = Freeapi(nube,username,password)
+            Free_API = Freeapi(URIS=nube,username=username,password=password)
             if(e==None):
                 continue
             msg = await message.reply("Link directo Detectado")
