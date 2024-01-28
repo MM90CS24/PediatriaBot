@@ -6,14 +6,14 @@ from requests_toolbelt import MultipartEncoder
 from yarl import URL
 import json
 class Freeapi():
-    def __init__(self,id) -> None:
+    def __init__(self,id):
 
         self.URI =""
 
         self.nube = ""
 
         self.username =""
-        self.id = id
+        self.ids = id
         self.password = ""
         self.Session = requests.Session()
         self.loadjson()
@@ -22,7 +22,7 @@ class Freeapi():
         pass
     def loadjson(self):
 
-        jsonloads = json.loads(open(str(self.id)+".json","r").read())
+        jsonloads = json.loads(open(str(self.ids)+".json","r").read())
         self.URI = jsonloads["nube"]
         self.nube = jsonloads["nube"]
         self.password = jsonloads["pass"]
