@@ -55,9 +55,11 @@ async def download(client: Client, message: Message):
             Free_API=""
 
             if(exists(str(message.from_user.id)+".json")):
-             await message.reply(message.from_user.id)
-             Free_API = Freeapi(id=message.from_user.id)
 
+             await message.reply(str(message.from_user.id))
+
+             Free_API = Freeapi(id=str(message.from_user.id))
+             await message.reply("ya paso esto")
             else:
                 await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
           

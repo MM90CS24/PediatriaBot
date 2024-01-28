@@ -6,6 +6,7 @@ from requests_toolbelt import MultipartEncoder
 from yarl import URL
 import json
 class Freeapi():
+    
     def __init__(self,id):
 
         self.URI =""
