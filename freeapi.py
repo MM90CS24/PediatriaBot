@@ -1,3 +1,4 @@
+from pyrogram.types.user_and_chats.user import User
 import requests
 import bs4
 from requests.sessions import session
@@ -5,29 +6,20 @@ from requests_toolbelt import MultipartEncoder
 from yarl import URL
 
 class Freeapi():
-    def __init__(self) -> None:
+    def __init__(self,passd,user,nube) -> None:
 
-        self.URI = ""
+        self.URI = nube
 
-        self.nube = ""
+        self.nube = nube
 
-        self.username = ""
+        self.username = user
 
-        self.password = ""
+        self.password = passd
         self.Session = requests.Session()
 
         self.login()
 
         pass
-    def setpass(self,passd):
-        self.password = passd
-        
-    def setuser(self,user):
-        self.username = user
-
-    def setnube(self, nube):
-        self.URI = nube
-        self.nube = nube
 
     def returnpass(self):
         return self.password

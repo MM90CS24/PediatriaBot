@@ -60,15 +60,12 @@ async def download(client: Client, message: Message):
 
              passw = jsonloads["pass"]
       
-             user= jsonloads["username"]
+             userd= jsonloads["username"]
           
-             nube = jsonloads["nube"]
-             
-             Free_API = Freeapi()
-             
-             Free_API.setnube(nube)
-             Free_API.setuser(user)
-             Free_API.setpass(passw)
+             nubed = jsonloads["nube"]
+
+             Free_API = Freeapi(passw,userd,nubed)
+
             else:
                 await message.reply("Configura tu nube con /setnube {'nube':'sunube','username':'nombredeusuario','pass':'contrasena'}")
           
