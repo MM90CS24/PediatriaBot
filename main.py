@@ -57,14 +57,17 @@ async def download(client: Client, message: Message):
             try:
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
-             
+
              passw = jsonloads["pass"]
       
              user= jsonloads["username"]
           
              nube = jsonloads["nube"]
 
-             Free_API = Freeapi(nube,user,passw)
+             Free_API = Freeapi()
+             Free_API.setnube(nube)
+             Free_API.setuser(user)
+             Free_API.setpass(passw)
     
 
             except:

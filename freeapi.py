@@ -2,24 +2,30 @@ import requests
 import bs4
 from requests.sessions import session
 from requests_toolbelt import MultipartEncoder
+from yarl import URL
 
 class Freeapi():
-    def __init__(self,URIS,username,password) -> None:
+    def __init__(self) -> None:
 
-        self.URI = URIS
+        self.URI = ""
 
-        self.nube = URIS
+        self.nube = ""
 
-        self.username = username
+        self.username = ""
 
-        self.password = password
-
+        self.password = ""
         self.Session = requests.Session()
 
         self.login()
 
         pass
-
+    def setpass(self,passd):
+        self.password = passd
+    def setuser(self,user):
+        self.username = user
+    def setnube(self, nube):
+        self.URI = nube
+        self.nube = nube
     def returnpass(self):
         return self.password
     def returnusername(self):
