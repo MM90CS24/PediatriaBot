@@ -47,6 +47,9 @@ async def download(client: Client, message: Message):
     
     if message.from_user.id in ALLOWED:
         print("Uso el bot "+client.name)
+        passw=""
+        user=""
+        nube= ""
         try:
 
              jsonloads = json.loads(open(str(message.from_user.id)+".json","r").read())
