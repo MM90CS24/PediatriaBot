@@ -41,7 +41,7 @@ class Freeapi():
 
         self.Session.headers.update({"Content-Type":"application/x-www-form-urlencoded"})
 
-        respuesta = self.Session.post(url="https://"+self.nube+"/index.php/spu/login/signIn",data=data)
+        respuesta = self.Session.post(url="https://"+self.nube+"/index.php/spu/login/signIn",data=data, verify=False)
 
         
 
@@ -59,9 +59,9 @@ class Freeapi():
          'commentsToEditor': ""
            }
 
-        respano =  self.Session.post("https://"+self.nube+"/index.php/spu/author/saveSubmit/1",data=data)
+        respano =  self.Session.post("https://"+self.nube+"/index.php/spu/author/saveSubmit/1",data=data, verify=False)
         
-        respa = self.Session.get(url=respano.url)
+        respa = self.Session.get(url=respano.url, verify=False)
         
         self.URI = respano.url
         
@@ -89,7 +89,7 @@ class Freeapi():
 
            cabeceras = {"Content-Type":f.content_type}
            link = "https://"+self.nube+"/index.php/spu/author/saveSubmit/2"
-           paso2 = self.Session.post(url=link,data=f,headers=cabeceras)
+           paso2 = self.Session.post(url=link,data=f,headers=cabeceras, verify=False)
 
 
 
@@ -97,7 +97,7 @@ class Freeapi():
            cabecer = {"Content-Type":"application/x-www-form-urlencoded"}
 
            datas="articleId="+articleID+"&formLocale=es_ES&deletedAuthors=&moveAuthor=0&moveAuthorDir=&moveAuthorIndex=&authors%5B0%5D%5BauthorId%5D=12070&authors%5B0%5D%5Bseq%5D=1&primaryContact=0&authors%5B0%5D%5BfirstName%5D=Erbe&authors%5B0%5D%5BmiddleName%5D=&authors%5B0%5D%5BlastName%5D=sdf&authors%5B0%5D%5Bemail%5D=developer1575%40gmail.com&authors%5B0%5D%5Borcid%5D=&authors%5B0%5D%5Burl%5D=&authors%5B0%5D%5Baffiliation%5D%5Bes_ES%5D=&authors%5B0%5D%5Bcountry%5D=&authors%5B0%5D%5BcompetingInterests%5D%5Bes_ES%5D=&authors%5B0%5D%5Bbiography%5D%5Bes_ES%5D=&title%5Bes_ES%5D=oo&abstract%5Bes_ES%5D=iiii&subject%5Bes_ES%5D=&language=es&sponsor%5Bes_ES%5D=&citations="
-           paso3 = self.Session.post(url="https://"+str(self.nube)+"/index.php/spu/author/saveSubmit/3",data=datas,headers=cabecer)
+           paso3 = self.Session.post(url="https://"+str(self.nube)+"/index.php/spu/author/saveSubmit/3",data=datas,headers=cabecer, verify=False)
     
            
            namessplit = filepath.split('/')
@@ -125,7 +125,7 @@ class Freeapi():
 
            soupa  = bs4.BeautifulSoup(daticos.text ,'html.parser')
          
-           respuesta = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/4",data=e,headers=headers)        
+           respuesta = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/4",data=e,headers=headers, verify=False)        
 
            
            #5 . FINALIZAR
@@ -139,7 +139,7 @@ class Freeapi():
 
            headers={"Content-Type":datosm5paso.content_type}
 
-           paso5 = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/4",data=datosm5paso,headers=headers)
+           paso5 = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/4",data=datosm5paso,headers=headers, verify=False)
 
            urlfile = self.Session.get(url=paso5.url)
 
@@ -152,7 +152,7 @@ class Freeapi():
                "articleId":articleID
            }
         
-           finalizar = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/5",data=datosfinal)
+           finalizar = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/5",data=datosfinal, verify=False)
 
            # print(finalizar.url)
            return sacadolink.attrs.get("href")
