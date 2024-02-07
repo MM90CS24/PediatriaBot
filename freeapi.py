@@ -121,7 +121,7 @@ class Freeapi():
 
            headers = {"Content-Type": e.content_type}
 
-           daticos = self.Session.get(url=paso3.url)
+           daticos = self.Session.get(url=paso3.url,verify=False)
 
            soupa  = bs4.BeautifulSoup(daticos.text ,'html.parser')
          
@@ -141,7 +141,7 @@ class Freeapi():
 
            paso5 = self.Session.post(url="https://"+self.nube+"/index.php/spu/author/saveSubmit/4",data=datosm5paso,headers=headers, verify=False)
 
-           urlfile = self.Session.get(url=paso5.url)
+           urlfile = self.Session.get(url=paso5.url,verify=False)
 
            soupera = bs4.BeautifulSoup(urlfile.text ,'html.parser')
 
