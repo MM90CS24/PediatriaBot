@@ -1,11 +1,11 @@
 NAME = "Ped"
-HASH = "13b1607f156d7a7f0c755dbf4ea5061a"
-ID =28341593
-BOT_TK = "6587799120:AAGshHv1iSaUCD1Cal9BtzsiCwzSG533jHY"
+HASH = "d67dd4c0f928836ce2313c8b44ffc872"
+ID =28320657
+BOT_TK = "6388393994:AAFZs6b8ZzlcI2pr-TEnLyfZPtJsBCoetBI"
 ZIPS = 10
 
 # para meter mas usuarios solo meta el ID del usuario 
 # en la lista 
 # PD: todos usan la misma cuenta
 
-ALLOWED = [957370219, 624861458,6762611207,5601757109]
+ALLOWED = [5775093377]
